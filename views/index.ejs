@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeForge - Where AI Meets Professional Excellence</title>
+    <style>
+        :root {
+            --star-color: rgba(255, 255, 255, 0.8);
+            --space-gradient: linear-gradient(45deg, #0b0c1a, #1a1b2f, #2d1b3a);
+            --nebula-purple: #6c5ce7;
+            --deep-space: #0b0c1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Mono', monospace;
+        }
+
+        body {
+            background: var(--space-gradient);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: var(--star-color);
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(11, 12, 26, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(108, 92, 231, 0.2);
+            position: relative;
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .brand-header {
+            text-align: center;
+            padding: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-header h1 {
+            font-weight: 300;
+            letter-spacing: 4px;
+            font-size: 3.5em;
+            /* text-transform: ; */
+
+            background: linear-gradient(45deg, #6c5ce7, #a66efa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s infinite;
+        }
+
+        .brand-header p {
+            font-size: 1.5em;
+            color: #A3E635;
+
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: 500;
+            color: #a66efa;
+            margin-bottom: 8px;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #2d2d4d;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(26, 27, 47, 0.8);
+            color: #ffffff;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--nebula-purple);
+            box-shadow: 0 0 15px rgba(108, 92, 231, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+
+            color: #ffff00;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+
+            padding: 16px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 12, 26, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .galaxy-spinner {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, transparent 40%, #6c5ce7);
+            animation: rotate 1s linear infinite;
+            position: relative;
+            margin: 0 auto 20px;
+        }
+
+        .galaxy-spinner::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: var(--deep-space);
+            border-radius: 50%;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #6c5ce7, #a66efa);
+            transition: width 30s linear;
+        }
+
+        .gemini-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #636e72;
+            font-size: 0.9em;
+        }
+
+        .gemini-logo {
+            width: 120px;
+            margin: 0 auto;
+            filter: drop-shadow(0 0 5px rgba(108, 92, 231, 0.5));
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                margin: 20px;
+                padding: 25px;
+            }
+
+            .form-grid-main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 50px;
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: rgba(26, 27, 47, 0.3);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .form-section:hover {
+
+            box-shadow: 0 4px 8px rgba(0, 0, 255, 0.2);
+            /* Soft blue shadow */
+            transform: scale(1.02);
+            /* Slight scaling effect */
+            transform: translateY(-3px);
+        }
+
+
+
+        .form-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .section-header {
+            border-left: 4px solid #6c5ce7;
+            padding-left: 20px;
+            margin: 40px 0 30px;
+            font-size: 1.8em;
+            letter-spacing: 2px;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+
+        .form-grid>div {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Form Grid */
+        .form-grid-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        /* Textarea */
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 18px;
+            /* border: 1px solid #ccc; */
+            border-radius: 5px;
+            resize: none;
+            font-size: 1.2rem;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+
+        /* Focus effect on text areas */
+        .form-section textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
+
+            .form-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        html {
+            min-height: 100%;
+            background: var(--space-gradient);
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="brand-header">
+        <h1>ResumeForge</h1>
+        <p>✨ Where AI Meets Professional Excellence</p>
+    </div>
+
+    <div class="container">
+        <form action="/submit" method="POST" id="cvForm" onsubmit="showLoading()">
+
+
+
+            <div class="form-grid">
+                <div class="form-section">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-section">
+                    <label for="email">Email ID:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-section">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-section">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" value="City, State, Country" required>
+                </div>
+                <div class="form-section">
+                    <label for="linkedin">LinkedIn:</label>
+                    <input type="text" id="linkedin" name="linkedin" value="Username">
+                </div>
+                <div class="form-section">
+                    <label for="github">GitHub:</label>
+                    <input type="text" id="github" name="github" value="Username">
+                </div>
+            </div>
+
+            <h2 class="section-header">Professional Details</h2>
+
+            <div class="form-section full-width">
+                <label for="summary">Summary:</label>
+                <textarea id="summary" name="summary"
+                    rows="4">Preferably write a short summary about yourself, else no worries, the AI will do it for you! </textarea>
+            </div>
+
+            <div class="form-grid-main">
+                <div class="form-section">
+                    <label for="skills">Technical Skills:</label>
+                    <textarea id="skills" name="skills" rows="3">
+List your relevant technical skills in the categories that apply to you. Modify or remove categories as needed.
+
+Programming Languages:
+Frameworks & Libraries:
+Databases:
+Development Tools:
+Other Technical Skills:
+                    </textarea>
+                </div>
+
+
+                <div class="form-section">
+                    <label for="education">Education:</label>
+                    <textarea id="education" name="education" rows="3">
+Bachelor of Technology in  
+
+University:  
+City:  
+Expected Graduation:  
+CGPA:  
+                        
+Secondary & Senior Secondary Education  
+Board:  
+Class 12 Percentage:  
+</div>
+
+Class 10 Percentage: </textarea>
+
+                    <div class="form-section">
+                        <label for="experience">Experience:</label>
+                        <textarea id="experience" name="experience" rows="3">Provide details of up to three experiences, such as internships, research, part-time work, or any relevant professional experience. If you have more experiences, copy and extend this format accordingly.
+
+Job Title:                            
+Company/Organization:  
+Experience 1:  
+Location (if applicable):  
+Project/Work Description:  
+Key Responsibilities:  
+Skills Used:  
+Start Date – End Date:  
+                        
+Experience 2:  
+Job Title:  
+Company/Organization:  
+Location (if applicable):  
+Project/Work Description:  
+Key Responsibilities:  
+Skills Used:  
+Start Date – End Date:  
+                        
+Experience 3:  
+Job Title:  
+Company/Organization:  
+Location (if applicable):  
+Project/Work Description:  
+Key Responsibilities:  
+Skills Used:  
+Start Date – End Date:  
+
+Additional Positions:  
+If you have held other roles, such as a core member of a club, student organization, oleadership position, you can include them here:  
+                        
+Position:  
+Organization/Club:  
+Responsibilities:  
+Start Date – End Date: 
+                        </textarea>
+                    </div>
+                    <div class="form-section">
+                        <label for="projects">Projects:</label>
+                        <textarea id="projects" name="projects" rows="3">
+List up to three relevant projects, such as academic projects, personal projects, open-source contributions, or hackathon projects. If you need to add more, copy and paste the format below. Modify or remove sections as needed.  
+
+Project 1  
+Project Name:  
+Completion Date (Month Year or Ongoing):  
+Project Description:  
+- Key feature or functionality  
+- Key feature or functionality  
+- Key feature or functionality  
+Skills Used:  
+Project Link (GitHub, website, etc.):  
+                        
+Project 2  
+Project Name:  
+Completion Date (Month Year or Ongoing):  
+Project Description:  
+- Key feature or functionality  
+- Key feature or functionality  
+- Key feature or functionality  
+Skills Used:  
+Project Link (GitHub, website, etc.):  
+                        
+Project 3  
+Project Name:  
+Completion Date (Month Year or Ongoing):  
+Project Description:  
+- Key feature or functionality  
+- Key feature or functionality  
+- Key feature or functionality  
+Skills Used:  
+Project Link (GitHub, website, etc.): </textarea>
+                    </div>
+
+
+
+                    <div class="form-section">
+                        <label for="achievements">Achievements:</label>
+                        <textarea id="achievements" name="achievements" rows="3">
+List any notable achievements, awards, certifications, or recognitions. These can be academic, professional, or personal accomplishments.
+                        </textarea>
+                    </div>
+
+                    <div class="form-section">
+                        <label for="languages">Languages:</label>
+                        <textarea id="languages" name="languages" rows="2">
+List the languages you know along with proficiency levels if necessary (e.g., Fluent, Conversational, Basic).   
+Languages:
+                    </textarea>
+                    </div>
+                </div>
+
+                <button type="submit">Generate Stellar Resume ⚡</button>
+        </form>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="galaxy-spinner"></div>
+            <h3>Warping Through Resume Space...</h3>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p>Please wait while we assemble your cosmic profile</p>
+        </div>
+    </div>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Loading animation
+        function showLoading() {
+            const overlay = document.getElementById('loadingOverlay');
+            const progress = document.getElementById('progress');
+            overlay.style.display = 'flex';
+            progress.style.width = '100%';
+        }
+
+        // Form element animation
+        document.querySelectorAll('.form-grid > div').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.animation = `slideUp 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards ${i * 0.1}s`;
+        });
+    </script>
+</body>
+
+</html>
