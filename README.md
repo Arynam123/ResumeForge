@@ -30,8 +30,9 @@ Ensure you have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   https://github.com/nishantkr2003/ResumeForge.git
+   git clone https://github.com/nishantkr2003/ResumeForge.git
    cd ResumeForge
+
    ```
 2. **Install dependencies**:
    ```bash
