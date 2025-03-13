@@ -21,8 +21,9 @@
         }
 
         body {
-            background: var(--space-gradient);
+            /* background: var(--space-gradient); */
             color: #ffffff;
+            background-color: black;
             line-height: 1.6;
             min-height: 100vh;
             position: relative;
@@ -55,13 +56,15 @@
             }
         }
 
+
+
         .container {
             max-width: 800px;
             margin: 40px auto;
             padding: 30px;
-            background: rgba(11, 12, 26, 0.9);
+            /* background: rgba(11, 12, 26, 0.9); */
             border-radius: 12px;
-            box-shadow: 0 0 30px rgba(108, 92, 231, 0.2);
+            box-shadow: 0 0 15px rgba(108, 92, 231, 0.5), 0 0 30px rgba(72, 61, 139, 0.3);
             position: relative;
             backdrop-filter: blur(10px);
             transform: translateY(20px);
@@ -365,6 +368,44 @@
             }
         }
 
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.2rem;
+            background: rgba(11, 12, 26, 0.9);
+            /* Slightly transparent background */
+            color: #ffffff;
+            /* White text color */
+            /* border-top: 1px solid #6c5ce7; */
+            /* Top border with nebula purple color */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            /* Subtle shadow for depth */
+        }
+
+        .footer p {
+            margin: 0;
+            font-family: 'Space Mono', monospace;
+            /* Consistent font */
+            letter-spacing: 1px;
+            /* Slight letter spacing */
+        }
+
+        .footer a {
+            color: #a66efa;
+            /* Link color */
+            text-decoration: none;
+            /* Remove underline */
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+            /* Change color on hover */
+        }
+
+
         html {
             min-height: 100%;
             background: var(--space-gradient);
@@ -450,13 +491,14 @@ CGPA:
 Secondary & Senior Secondary Education  
 Board:  
 Class 12 Percentage:  
-</div>
+
 
 Class 10 Percentage: </textarea>
+                </div>
 
-                    <div class="form-section">
-                        <label for="experience">Experience:</label>
-                        <textarea id="experience" name="experience" rows="3">Provide details of up to three experiences, such as internships, research, part-time work, or any relevant professional experience. If you have more experiences, copy and extend this format accordingly.
+                <div class="form-section">
+                    <label for="experience">Experience:</label>
+                    <textarea id="experience" name="experience" rows="3">Provide details of up to three experiences, such as internships, research, part-time work, or any relevant professional experience. If you have more experiences, copy and extend this format accordingly.
 
 Job Title:                            
 Company/Organization:  
@@ -493,10 +535,10 @@ Organization/Club:
 Responsibilities:  
 Start Date – End Date: 
                         </textarea>
-                    </div>
-                    <div class="form-section">
-                        <label for="projects">Projects:</label>
-                        <textarea id="projects" name="projects" rows="3">
+                </div>
+                <div class="form-section">
+                    <label for="projects">Projects:</label>
+                    <textarea id="projects" name="projects" rows="3">
 List up to three relevant projects, such as academic projects, personal projects, open-source contributions, or hackathon projects. If you need to add more, copy and paste the format below. Modify or remove sections as needed.  
 
 Project 1  
@@ -528,38 +570,49 @@ Project Description:
 - Key feature or functionality  
 Skills Used:  
 Project Link (GitHub, website, etc.): </textarea>
-                    </div>
+                </div>
 
 
 
-                    <div class="form-section">
-                        <label for="achievements">Achievements:</label>
-                        <textarea id="achievements" name="achievements" rows="3">
+                <div class="form-section">
+                    <label for="achievements">Achievements:</label>
+                    <textarea id="achievements" name="achievements" rows="3">
 List any notable achievements, awards, certifications, or recognitions. These can be academic, professional, or personal accomplishments.
                         </textarea>
-                    </div>
+                </div>
 
-                    <div class="form-section">
-                        <label for="languages">Languages:</label>
-                        <textarea id="languages" name="languages" rows="2">
+                <div class="form-section">
+                    <label for="languages">Languages:</label>
+                    <textarea id="languages" name="languages" rows="2">
 List the languages you know along with proficiency levels if necessary (e.g., Fluent, Conversational, Basic).   
 Languages:
                     </textarea>
-                    </div>
                 </div>
+            </div>
 
-                <button type="submit">Generate Stellar Resume ⚡</button>
+            <button type="submit">Generate Stellar Resume ⚡</button>
         </form>
+
+
+    </div>
+    <div class="footer">
+        <footer>
+            <p>Created by ❤️ Nishant Kumar</p>
+            <p>
+                <a href="https://www.linkedin.com/in/nishant-kumar-749279260/" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/nishantkr2003" target="_blank">GitHub</a>
+            </p>
+        </footer>
     </div>
 
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-content">
             <div class="galaxy-spinner"></div>
-            <h3>Warping Through Resume Space...</h3>
+            <h3>Analyzing your resume with AI intelligence..</h3>
             <div class="progress-bar">
                 <div class="progress" id="progress"></div>
             </div>
-            <p>Please wait while we assemble your cosmic profile</p>
+            <p>Please wait while our AI compiles your personalized profile.</p>
         </div>
     </div>
 

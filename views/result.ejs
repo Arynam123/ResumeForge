@@ -23,8 +23,9 @@
         }
 
         body {
-            background: var(--space-gradient);
+            /* background: var(--space-gradient); */
             color: #ffffff;
+            background-color: black;
             line-height: 1.6;
             min-height: 100vh;
             position: relative;
@@ -57,13 +58,15 @@
             }
         }
 
+
+
         .container {
             max-width: 800px;
             margin: 40px auto;
             padding: 30px;
-            background: rgba(11, 12, 26, 0.9);
+            /* background: rgba(11, 12, 26, 0.9); */
             border-radius: 12px;
-            box-shadow: 0 0 30px rgba(108, 92, 231, 0.2);
+            box-shadow: 0 0 15px rgba(108, 92, 231, 0.5), 0 0 30px rgba(72, 61, 139, 0.3);
             position: relative;
             backdrop-filter: blur(10px);
             transform: translateY(20px);
@@ -367,6 +370,44 @@
             }
         }
 
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.2rem;
+            background: black;
+            /* Slightly transparent background */
+            color: #ffffff;
+            /* White text color */
+            /* border-top: 1px solid #6c5ce7; */
+            /* Top border with nebula purple color */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            /* Subtle shadow for depth */
+        }
+
+        .footer p {
+            margin: 0;
+            font-family: 'Space Mono', monospace;
+            /* Consistent font */
+            letter-spacing: 1px;
+            /* Slight letter spacing */
+        }
+
+        .footer a {
+            color: #a66efa;
+            /* Link color */
+            text-decoration: none;
+            /* Remove underline */
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+            /* Change color on hover */
+        }
+
+
         html {
             min-height: 100%;
             background: var(--space-gradient);
@@ -510,6 +551,16 @@
         <br>
         <p class="cosmic-hint">PS: Click on the New Project and paste what you copied here over there and press
             Recompile! Your resume will be ready to download!</p>
+    </div>
+
+    <div class="footer">
+        <footer>
+            <p>Created by ❤️ Nishant Kumar</p>
+            <p>
+                <a href="https://www.linkedin.com/in/nishant-kumar-749279260/" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/nishantkr2003" target="_blank">GitHub</a>
+            </p>
+        </footer>
     </div>
 
     <div class="notification" id="copyNotification">Copied to clipboard! 🎉</div>
