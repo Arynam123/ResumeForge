@@ -524,7 +524,7 @@ user's languages: ${formData.languages}
 
 app.get("/code.tex", (req, res) => {
   res.sendFile(path.join(__dirname, "code.tex"));
-  exit(1);
+  //exit(1);
 });
 
 app.listen(port, () => {
